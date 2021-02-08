@@ -20,7 +20,7 @@ cart = JSON.parse(localStorage.getItem('local'));
 
 $('.click-add-cart').click(function (e) {
     e.preventDefault();
-    var Id =$(this).parents("div.add-id-cart").data("id");
+    var Id = $(this).parents("div.add-id-cart").data("id");
     var tensp = $(this).parents(".card_btn").siblings(".card-title").html();
     var anh = $(this).parents(".add-id-cart").find("img.imgchinh").attr('src');
     var gia = $(this).parents(".card_btn").siblings(".card-text").html();
@@ -42,9 +42,13 @@ $('.click-add-cart').click(function (e) {
     if (flag === false) { // sản phẩm chưa  có trong giỏ hàng
         obj.quantity = 1;
         cart.push(obj);
+      alert("Thêm sản phẩm thành công");
     }
-    else cart[i].quantity += 1; // sản phẩm đã có trong giỏ hàng
-    
+    else {
+        cart[i].quantity += 1; // sản phẩm đã có trong giỏ hàng
+        alert("Sản phẩm đã tồn tại, tăng số lượng thành công");
+    }
+
     localStorage.setItem('local', JSON.stringify(cart));
 });
 
